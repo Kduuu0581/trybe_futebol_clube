@@ -21,4 +21,13 @@ async function loginUser(emailUser: string, password: string) {
   }
 }
 
-export default { loginUser };
+async function userRole(id: number) {
+  const user = await UserModel.findOne({ where: { id } });
+  if (!user) {
+    return null;
+  }
+  const { role } = user.dataValues;
+  return role;
+}
+
+export default { loginUser, userRole };

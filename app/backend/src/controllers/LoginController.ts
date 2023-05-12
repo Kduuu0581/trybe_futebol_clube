@@ -14,4 +14,11 @@ const login = async (req: Request, res: Response) => {
   }
 };
 
-export default { login };
+const userRole = async (req: Request, res: Response) => {
+  const { payload } = req.body.user;
+  const { id } = payload;
+  const role = await LoginService.userRole(id);
+  return res.status(200).json({ role });
+};
+
+export default { login, userRole };
