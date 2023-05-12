@@ -6,4 +6,12 @@ async function getAll(): Promise<Teams[]> {
   return teams;
 }
 
-export default { getAll };
+async function getAllTeamById(id: number) {
+  const teams = await TeamModel.findByPk(id);
+  return teams;
+}
+
+export default {
+  getAll,
+  getAllTeamById,
+};
