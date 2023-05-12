@@ -8,7 +8,7 @@ const validateUserLogin = (req: Request, res: Response, next: NextFunction) => {
     return res.status(400).json({ message: 'All fields must be filled' });
   }
   if (!regex.test(email) || password.length < 6) {
-    return res.status(400).json({ message: 'Invalid email or password' });
+    return res.status(401).json({ message: 'Invalid email or password' });
   }
   next();
 };
