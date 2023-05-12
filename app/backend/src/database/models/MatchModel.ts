@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '.';
-import TeamModel from './TeamModel';
+import Teams from './TeamModel';
 
 class MatchModel extends Model {
   declare id: number;
@@ -59,12 +59,12 @@ MatchModel.init({
   timestamps: false,
 });
 
-MatchModel.belongsTo(TeamModel, {
+MatchModel.belongsTo(Teams, {
   foreignKey: 'homeTeamId',
   as: 'homeTeam',
 });
 
-MatchModel.belongsTo(TeamModel, {
+MatchModel.belongsTo(Teams, {
   foreignKey: 'awayTeamId',
   as: 'awayTeam',
 });
