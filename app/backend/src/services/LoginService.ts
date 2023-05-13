@@ -1,5 +1,5 @@
 import bcrypt = require('bcryptjs');
-import UserModel from '../database/models/Usermodel';
+import UserModel from '../database/models/UserModel';
 
 async function loginUser(emailUser: string, password: string) {
   const users = await UserModel.findOne({ where: { email: emailUser } });
@@ -21,13 +21,16 @@ async function loginUser(emailUser: string, password: string) {
   }
 }
 
-async function userRole(id: number) {
-  const user = await UserModel.findOne({ where: { id } });
-  if (!user) {
-    return null;
-  }
-  const { role } = user.dataValues;
-  return role;
-}
+// async function userRole(id: number) {
+//   const user = await UserModel.findOne({ where: { id } });
+//   if (!user) {
+//     return null;
+//   }
+//   const { role } = user.dataValues;
+//   return role;
+// }
 
-export default { loginUser, userRole };
+export default {
+  loginUser,
+  // userRole,
+};

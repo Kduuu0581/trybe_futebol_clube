@@ -14,11 +14,14 @@ const login = async (req: Request, res: Response) => {
   }
 };
 
-const userRole = async (req: Request, res: Response) => {
-  const { payload } = req.body.user;
-  const { id } = payload;
-  const role = await LoginService.userRole(id);
-  return res.status(200).json({ role });
-};
+// const userRole = async (req: Request, res: Response) => {
+//   const { payload } = req.body.user;
+//   const { id } = payload;
+//   const role = await LoginService.userRole(id);
+//   return res.status(200).json({ role });
+// };
 
-export default { login, userRole };
+export default {
+  login,
+  // userRole,
+};
