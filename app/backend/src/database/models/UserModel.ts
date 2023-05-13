@@ -3,7 +3,7 @@ import db from '.';
 
 class UserModel extends Model {
   declare id: number;
-  declare username: string;
+  declare userName: string;
   declare role: string;
   declare email: string;
   declare password: string;
@@ -15,7 +15,7 @@ UserModel.init({
     primaryKey: true,
     autoIncrement: true,
   },
-  username: {
+  userName: {
     type: DataTypes.STRING,
     allowNull: false,
   },
