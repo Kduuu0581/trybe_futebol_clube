@@ -7,7 +7,6 @@ async function loginUser(emailUser: string, password: string) {
     return null;
   }
   const bcryptCompare = bcrypt.compareSync(password, users.dataValues.password);
-  console.log(users.dataValues.password);
 
   if (bcryptCompare) {
     const { id, email, role, username } = users.dataValues;
@@ -21,16 +20,16 @@ async function loginUser(emailUser: string, password: string) {
   }
 }
 
-// async function userRole(id: number) {
-//   const user = await UserModel.findOne({ where: { id } });
-//   if (!user) {
-//     return null;
-//   }
-//   const { role } = user.dataValues;
-//   return role;
-// }
+async function userRole(id: number) {
+  const user = await UserModel.findOne({ where: { id } });
+  if (!user) {
+    return null;
+  }
+  const { role } = user.dataValues;
+  return role;
+}
 
 export default {
   loginUser,
-  // userRole,
+  userRole,
 };
