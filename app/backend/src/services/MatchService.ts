@@ -36,4 +36,13 @@ export default class MatchesService {
     const match = await this.matchModel.findOne({ where: { id } });
     match?.update({ inProgress: false });
   };
+
+  updateMatch = async (bodyA: number, bodyB: number, id: number) => {
+    const match = await this.matchModel.findOne({ where: { id } });
+    match?.update({
+      homeTeamGoals: bodyA,
+      awayTeamGoals: bodyB,
+    });
+    return match;
+  };
 }
