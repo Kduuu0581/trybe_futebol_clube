@@ -32,8 +32,16 @@ export default class MatchController {
   updateMatch = async (req: Request, res: Response) => {
     const { homeTeamGoals, awayTeamGoals } = req.body;
     const { id } = req.params;
-    const match = await this
-      ._service.updateMatch(homeTeamGoals, awayTeamGoals, Number(id) as number);
-    return res.status(200).json(match);
+    // const match = await this
+    //   ._service.updateMatch(homeTeamGoals, awayTeamGoals, Number(id) as number);
+    // return res.status(200).json(match);
+    await this._service.updateMatch(homeTeamGoals, awayTeamGoals, Number(id) as number);
+    return res.status(200).json({ message: 'Em andamento' });
+  };
+
+  createMatch = async (req: Request, res: Response) => {
+    const newMatch = req.body;
+    const match = await this._service.createMatch(newMatch);
+    return res.status(201).json(match);
   };
 }
