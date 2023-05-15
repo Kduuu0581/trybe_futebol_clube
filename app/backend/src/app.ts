@@ -1,6 +1,6 @@
 import * as express from 'express';
 import loginRoutes from './routes/LoginRoute';
-import matchRoutes from './routes/MatcheRoute';
+import matchRoutes from './routes/MatchRoute';
 import teamRoutes from './routes/TeamRoute';
 
 class App {

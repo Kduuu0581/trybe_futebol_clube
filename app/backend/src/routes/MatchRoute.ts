@@ -9,6 +9,6 @@ const matchController = new MatchController(matchesService);
 
 const matchRoutes = express.Router();
 
-matchRoutes.get('/', matchController.getAll);
+matchRoutes.get('/', matchController.getAllMatches);
 
 export default matchRoutes;

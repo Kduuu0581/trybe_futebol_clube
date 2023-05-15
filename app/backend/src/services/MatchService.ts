@@ -13,16 +13,22 @@ export default class MatchesService {
 
   getAll = async (): Promise<MatchModel[]> => {
     const allMatches = await this.matchModel.findAll({
-      include: [{
-        model: this.teamModel,
-        as: 'awayTeam',
-        attributes: { exclude: ['id'] },
-      }, {
-        model: this.teamModel,
-        as: 'homeTeam',
-        attributes: { exclude: ['id'] },
-      }],
+      include: [
+        { model: this.teamModel, as: 'awayTeam', attributes: { exclude: ['id'] } },
+        { model: this.teamModel, as: 'homeTeam', attributes: { exclude: ['id'] } },
+      ],
     });
     return allMatches;
+  };
+
+  getInProgress = async (inProgress: string): Promise<MatchModel[]> => {
+    const matches = await this.matchModel.findAll({
+      where: { inProgress: JSON.parse(inProgress.toLocaleLowerCase()) },
+      include: [
+        { model: this.teamModel, as: 'awayTeam', attributes: { exclude: ['id'] } },
+        { model: this.teamModel, as: 'homeTeam', attributes: { exclude: ['id'] } },
+      ],
+    });
+    return matches;
   };
 }
