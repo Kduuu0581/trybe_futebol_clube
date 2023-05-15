@@ -8,11 +8,6 @@ export default class MatchController {
     this._service = service;
   }
 
-  // getAll = async (_req: Request, res: Response) => {
-  //   const allMatches = await this._service.getAll();
-  //   return res.status(200).json(allMatches);
-  // };
-
   getAllMatches = async (req: Request, res: Response) => {
     const { inProgress } = req.query;
     if (inProgress) {
@@ -32,9 +27,7 @@ export default class MatchController {
   updateMatch = async (req: Request, res: Response) => {
     const { homeTeamGoals, awayTeamGoals } = req.body;
     const { id } = req.params;
-    // const match = await this
-    //   ._service.updateMatch(homeTeamGoals, awayTeamGoals, Number(id) as number);
-    // return res.status(200).json(match);
+
     await this._service.updateMatch(homeTeamGoals, awayTeamGoals, Number(id) as number);
     return res.status(200).json({ message: 'Em andamento' });
   };
