@@ -19,7 +19,7 @@ export default class MatchController {
       const matches = await this._service.getInProgress(inProgress as string);
       return res.status(200).json(matches);
     }
-    const matchesInProgress = await this._service.getAll();
-    return res.status(200).json(matchesInProgress);
+    const allMatches = await this._service.getAll();
+    return res.status(200).json(allMatches);
   };
 }
