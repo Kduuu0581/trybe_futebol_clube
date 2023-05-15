@@ -22,4 +22,10 @@ export default class MatchController {
     const allMatches = await this._service.getAll();
     return res.status(200).json(allMatches);
   };
+
+  getById = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    await this._service.getById(Number(id) as number);
+    return res.status(200).json({ message: 'Finished' });
+  };
 }

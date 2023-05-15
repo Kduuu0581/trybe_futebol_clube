@@ -31,4 +31,9 @@ export default class MatchesService {
     });
     return matches;
   };
+
+  getById = async (id: number) => {
+    const match = await this.matchModel.findOne({ where: { id } });
+    match?.update({ inProgress: false });
+  };
 }
