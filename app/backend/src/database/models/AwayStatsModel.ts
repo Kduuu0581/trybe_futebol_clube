@@ -2,7 +2,7 @@ import Stats from '../../intefaces/stats';
 import MatchModel from './MatchModel';
 import Teams from './TeamModel';
 
-export default class TeamStatsModel implements Stats {
+export default class AwayStatsModel implements Stats {
   name: string;
   totalGames: number;
   totalPoints: number;
@@ -33,8 +33,8 @@ export default class TeamStatsModel implements Stats {
 
   getTotalGames() {
     let value = 0;
-    this.matches.forEach((match) => {
-      if (this.team.id === match.awayTeamId && match.inProgress === false) {
+    this.matches.forEach((e) => {
+      if (this.team.id === e.awayTeamId && e.inProgress === false) {
         value += 1;
       }
     });
@@ -43,10 +43,10 @@ export default class TeamStatsModel implements Stats {
 
   getTotalVictories() {
     let value = 0;
-    this.matches.forEach((match) => {
-      if (match.inProgress === false
-         && this.team.id === match.awayTeamId
-          && match.homeTeamGoals < match.awayTeamGoals) {
+    this.matches.forEach((e) => {
+      if (e.inProgress === false
+         && this.team.id === e.awayTeamId
+          && e.homeTeamGoals < e.awayTeamGoals) {
         value += 1;
       }
     });
@@ -55,10 +55,10 @@ export default class TeamStatsModel implements Stats {
 
   getTotalLosses() {
     let value = 0;
-    this.matches.forEach((match) => {
-      if (match.homeTeamGoals > match.awayTeamGoals
-        && match.inProgress === false
-        && this.team.id === match.awayTeamId) {
+    this.matches.forEach((e) => {
+      if (e.homeTeamGoals > e.awayTeamGoals
+        && e.inProgress === false
+        && this.team.id === e.awayTeamId) {
         value += 1;
       }
     });
@@ -67,10 +67,10 @@ export default class TeamStatsModel implements Stats {
 
   getTotalDraws() {
     let value = 0;
-    this.matches.forEach((match) => {
-      if (match.homeTeamGoals === match.awayTeamGoals
-        && match.inProgress === false
-        && this.team.id === match.awayTeamId) {
+    this.matches.forEach((e) => {
+      if (e.homeTeamGoals === e.awayTeamGoals
+        && e.inProgress === false
+        && this.team.id === e.awayTeamId) {
         value += 1;
       }
     });
@@ -79,9 +79,9 @@ export default class TeamStatsModel implements Stats {
 
   getGoalsFavor() {
     let value = 0;
-    this.matches.forEach((match) => {
-      if (this.team.id === match.awayTeamId && match.inProgress === false) {
-        value += match.homeTeamGoals;
+    this.matches.forEach((e) => {
+      if (this.team.id === e.awayTeamId && e.inProgress === false) {
+        value += e.awayTeamGoals;
       }
     });
     return value;
@@ -89,9 +89,9 @@ export default class TeamStatsModel implements Stats {
 
   getGoalsOwn() {
     let value = 0;
-    this.matches.forEach((match) => {
-      if (this.team.id === match.awayTeamId && match.inProgress === false) {
-        value += match.awayTeamGoals;
+    this.matches.forEach((e) => {
+      if (this.team.id === e.awayTeamId && e.inProgress === false) {
+        value += e.homeTeamGoals;
       }
     });
     return value;

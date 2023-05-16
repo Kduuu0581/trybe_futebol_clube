@@ -16,14 +16,48 @@ export default class LeaderBoardService {
   getHomeTeam = async () => {
     const leaderboardHomeTeams = await this.teamModel.findAll();
     const leaderboardHomeMatches = await this.matchModel.findAll();
-    const newBoard = new LeaderBoard(leaderboardHomeTeams, leaderboardHomeMatches);
-    return newBoard.createBoard();
+
+    const newboard = new LeaderBoard(leaderboardHomeTeams, leaderboardHomeMatches);
+    const result = newboard.createBoard();
+    const sorted = result.sort((a, b) => {
+      if (a.totalPoints > b.totalPoints) { return -1; }
+      if (a.totalPoints < b.totalPoints) { return 1; }
+
+      if (a.totalVictories > b.totalVictories) { return -1; }
+      if (a.totalVictories < b.totalVictories) { return 1; }
+
+      if (a.goalsBalance > b.goalsBalance) { return -1; }
+      if (a.goalsBalance < b.goalsBalance) { return 1; }
+
+      if (a.goalsFavor > b.goalsFavor) { return -1; }
+      if (a.goalsFavor < b.goalsFavor) { return 1; }
+
+      return 0;
+    });
+    return sorted;
   };
 
   getAwayTeam = async () => {
-    const leaderboardAwayTeams = await this.teamModel.findAll();
-    const leaderboardAwayMatches = await this.matchModel.findAll();
-    const newBoard = new AwayLeader(leaderboardAwayTeams, leaderboardAwayMatches);
-    return newBoard.createBoard();
+    const leaderboardHomeTeams = await this.teamModel.findAll();
+    const leaderboardHomeMatches = await this.matchModel.findAll();
+
+    const newBoard = new AwayLeader(leaderboardHomeTeams, leaderboardHomeMatches);
+    const result = newBoard.createBoard();
+    const sortedaway = result.sort((a, b) => {
+      if (a.totalPoints < b.totalPoints) { return -1; }
+      if (a.totalPoints > b.totalPoints) { return 1; }
+
+      if (a.totalVictories < b.totalVictories) { return -1; }
+      if (a.totalVictories > b.totalVictories) { return 1; }
+
+      if (a.goalsBalance < b.goalsBalance) { return -1; }
+      if (a.goalsBalance > b.goalsBalance) { return 1; }
+
+      if (a.goalsFavor < b.goalsFavor) { return -1; }
+      if (a.goalsFavor > b.goalsFavor) { return 1; }
+
+      return 0;
+    });
+    return sortedaway;
   };
 }
