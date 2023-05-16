@@ -8,8 +8,10 @@ export default interface Stats {
   totalVictories: number;
   totalDraws: number;
   totalLosses: number;
-  goalsFavor: number;
-  goalsOwn: number;
+  // goalsFavor: number;
+  // goalsOwn: number;
+  // goalsBalance: number;
+  // efficiency: number;
   teams?: Teams;
   matches?: MatchModel[];
 }
