@@ -10,5 +10,6 @@ const leaderboardController = new LeaderboardController(leaderboardService);
 const leaderboardRoutes = express.Router();
 
 leaderboardRoutes.get('/home', leaderboardController.getHomeTeam);
+leaderboardRoutes.get('/away', leaderboardController.getAwayTeam);
 
 export default leaderboardRoutes;

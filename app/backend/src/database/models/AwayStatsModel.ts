@@ -46,7 +46,7 @@ export default class TeamStatsModel implements Stats {
     this.matches.forEach((match) => {
       if (match.inProgress === false
          && this.team.id === match.awayTeamId
-          && match.awayTeamGoals) {
+          && match.homeTeamGoals < match.awayTeamGoals) {
         value += 1;
       }
     });
@@ -56,8 +56,9 @@ export default class TeamStatsModel implements Stats {
   getTotalLosses() {
     let value = 0;
     this.matches.forEach((match) => {
-      if (match.inProgress === false
-         && this.team.id === match.awayTeamId) {
+      if (match.homeTeamGoals > match.awayTeamGoals
+        && match.inProgress === false
+        && this.team.id === match.awayTeamId) {
         value += 1;
       }
     });
