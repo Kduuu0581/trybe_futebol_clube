@@ -1,6 +1,6 @@
-Este projeto contém os requisitos realizados por _[Carlos Oliveira](https://www.linkedin.com/in/carlosoliveira81/)_ enquanto estudava na [Trybe](https://www.betrybe.com/) :rocket:
+Este projeto contém os requisitos realizados por _[Carlos Oliveira](https://www.linkedin.com/in/carlosoliveira81/)_ enquanto estudava na [Trybe](https://www.betrybe.com/) :rocket: 
 
-# Project Trybe Futebol Clube
+# Project Trybe Futebol Clube ⚽
 
 O TFC é um site informativo sobre partidas e classificações de futebol!
 
